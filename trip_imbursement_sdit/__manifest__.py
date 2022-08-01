@@ -3,7 +3,7 @@
 {
     'name': 'Trip & Fuel Reimbursement',
     'summary': '''Customizations in the fleet module to the workflow for the reimbursement of trip allowance or fuel allowance by direct payment.''',
-    'author': 'Smart Dimensions Information Technology',
+    'author': 'Smart Dimensions for Information Technology',
     'website': 'http://sdit.co/',
     'category': 'Custom Fleet',
     'version': '12.0.1',
