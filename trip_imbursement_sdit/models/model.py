@@ -11,6 +11,12 @@ class InheritVehicle(models.Model):
     custom_driver_id = fields.Many2one('hr.employee', string='Driver')
 
 
+class InheritPicking(models.Model):
+    _inherit = 'stock.picking'
+    driver_name = fields.Many2one('hr.employee', string='Driver name')
+    vehicle = fields.Char('Vehicle No.')
+
+
 class ReimbursementTrip(models.Model):
     _name = 'trip.reimbursement'
     _inherit = ['mail.thread', 'mail.activity.mixin']
