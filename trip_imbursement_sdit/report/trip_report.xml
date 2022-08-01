@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<report
+				id="trip_reimbursement_report_document"
+				model="trip.reimbursement"
+				string="Allowance Report"
+				report_type="qweb-pdf"
+				name="fleet_customizations.report_trip_reimbursement"
+				file="fleet_customizations.report_trip_reimbursement"
+		/>
+		<template id="report_trip_reimbursement">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-call="web.external_layout">
+						<div class="page">
+							<h2>
+								<span t-field="o.name"/>
+							</h2>
+							<br />
+							<h3>
+								Allowance Type:<span t-field="o.reimbursement_type"/>
+							</h3>
+							<br/>
+							<table class="table table-sm">
+								<thead>
+									<tr>
+										<th><strong>Driver ID</strong></th>
+										<th><strong>Driver</strong></th>
+										<th><strong>Iqama Number.</strong></th>
+										<th><strong>Trip Date</strong></th>
+										<th><strong>Request Date</strong></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<span t-field="o.employee_number"/>
+										</td>
+										<td>
+											<span t-field="o.driver_id.name"/>
+										</td>
+										<td>
+											<span t-field="o.iqama_no"/>
+										</td>
+										<td>
+											<span t-field="o.trip_date"/>
+										</td>
+										<td>
+											<span t-field="o.request_date"/>
+										</td>
+									</tr>
+								</tbody>
+								<br />
+								<thead>
+									<tr>
+										<th>.</th>
+									</tr>
+									<tr>
+										<th><strong>Vehicle</strong></th>
+										<th><strong>License Plate</strong></th>
+										<th><strong>Opening Millage</strong></th>
+										<th><strong>Closing Millage</strong></th>
+										<th><strong>Total Distance(KM)</strong></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<span>.</span>
+									</tr>
+									<tr>
+										<td>
+											<span t-field="o.vehicle_id.name"/>
+										</td>
+										<td>
+											<span t-field="o.license_plate"/>
+										</td>
+										<td>
+											<span t-field="o.opening_millage"/>
+										</td>
+										<td>
+											<span t-field="o.closing_millage"/>
+										</td>
+										<td>
+											<span t-field="o.difference_millage"/>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<br />
+							<table class="table table-bordered">
+								<thead style="border-style: solid;">
+									<tr>
+										<th width="8%" class="text-center">S No.</th>
+										<th width="16%" class="text-center">Delivery Ref</th>
+										<th width="10%" class="text-center">Trip From(Origin)</th>
+										<th width="15%" class="text-center">Origin Address</th>
+										<th width="15%" class="text-center">Destination Address</th>
+										<th width="8%" class="text-center">Distance(in KM)</th>
+										<th width="8%" class="text-center">Amount</th>
+										<th width="10%" class="text-center">Comments</th>
+									</tr>
+								</thead>
+								<tbody class="invoice_tbody">
+									<t t-set="i" t-value="1"/>
+									<tr t-foreach="o.trip_lines" t-as="l">
+										<td class="text-center"><span t-esc="i"/></td>
+										<td class="text-center"><span t-field="l.delivery_id.name"/></td>
+										<td class="text-center"><span t-field="l.from_location.complete_name"/></td>
+										<td class="text-center"><span t-field="l.from_address"/></td>
+										<td class="text-center"><span t-field="l.to_address"/></td>
+										<td class="text-center"><span t-field="l.trip_distance"/></td>
+										<td class="text-center"><span t-field="l.trip_amount"/></td>
+										<td class="text-center"><span t-field="l.comments"/></td>
+										<t t-set="i" t-value="i+1"/>
+									</tr>
+								</tbody>
+							</table>
+							<div class="clearfix">
+								<div id="total" class="row" name="total">
+									<div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+										<table class="table table-sm">
+
+											<tr class="border-black o_total">
+												<td><strong>Total Amount:</strong></td>
+												<td class="text-right">
+												<strong><span t-field="o.amount_total"/>&#160;SR</strong>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<br />
+							<p t-if="o.note">
+								<b><span t-field="o.note"/></b>
+							</p>
+							<br /><br /><br />
+							<table class="table table-condensed">
+								<tbody>
+									<tr>
+										<td class="text-center" name="1" align="right" valign="baseline">
+											<br/>
+											<strong>______________________</strong>
+											<br/>
+											<strong>HR Manager</strong>
+										</td>
+
+
+										<td class="text-center" name="1" align="right" valign="baseline">
+											<br/>
+											<strong>______________________</strong>
+											<br/>
+											<strong>Finance Manager</strong>
+										</td>
+
+
+										<td class="text-center" name="1" align="left" valign="baseline">
+											<br/>
+											<strong>___________________________</strong>
+											<br/>
+											<strong>Request By</strong>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

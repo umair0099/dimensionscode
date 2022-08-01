@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_trip_reimbursement,trip.reimbursement,model_trip_reimbursement,,1,1,1,1
+access_trip_lines,trip.lines,model_trip_lines,,1,1,1,1
+access_trip_lines_fuel,trip.lines.fuel,model_trip_lines_fuel,,1,1,1,1
+access_trip_configuration,trip.configuration,model_trip_configuration,,1,1,1,1
+access_trip_rate_lines,trip.rate.lines,model_trip_rate_lines,,1,1,1,1
+access_fuel_rate_lines,fuel.rate.lines,model_fuel_rate_lines,,1,1,1,1

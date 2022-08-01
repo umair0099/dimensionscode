@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="trip_configuration_own_company" model="ir.rule">
+            <field name="name">Trip Config Own Company</field>
+            <field name="model_id" ref="model_trip_configuration" />
+            <field name="domain_force">[('company_id','=', user.company_id.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]" />
+            <field name="global" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="trip_reimbursement_own_company" model="ir.rule">
+            <field name="name">Trip Reimbursement Own Company</field>
+            <field name="model_id" ref="model_trip_reimbursement" />
+            <field name="domain_force">[('company_id','=', user.company_id.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]" />
+            <field name="global" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="seq_trip_reimbursement" model="ir.sequence">
+            <field name="name">Trip Reimbursement</field>
+            <field name="code">seq.trip.reimbursement</field>
+            <field name="padding">4</field>
+            <field name="prefix">TR/%(year)s/%(month)s/</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_fuel_reimbursement" model="ir.sequence">
+            <field name="name">Fuel Reimbursement</field>
+            <field name="code">seq.fuel.reimbursement</field>
+            <field name="padding">4</field>
+            <field name="prefix">FR/%(year)s/%(month)s/</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

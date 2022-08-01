@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_payment_trip_wizard">
+        <field name="name">wizard.payment.view</field>
+        <field name="model">reimbursement.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Payment Mode">
+                <p colspan="2" class="oe_edit_only oe_grey">
+                    Select the payment mode
+                </p>
+                <group col="2" colspan="2">
+                    <field name="payment_type" string="Payment Type"/>
+                </group>
+                <footer>
+                    <button name="action_do_payment" type="object" string="Confirm" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_payment_wizard_wiz">
+        <field name="name">Payment Mode</field>
+        <field name="res_model">reimbursement.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
