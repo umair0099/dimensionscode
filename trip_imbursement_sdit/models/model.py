@@ -157,7 +157,6 @@ class ReimbursementTrip(models.Model):
                                             'partner_id': vendor.id,
                                             'partner_type': 'supplier',
                                             'amount':self.amount_total,
-                                            'employee': self.driver_id.id,
                                             'journal_id':journals[0].id,
                                             'payment_date': fields.Date.today(),
                                             'communication': self.name,
